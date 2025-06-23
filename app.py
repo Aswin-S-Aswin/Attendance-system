@@ -9,11 +9,9 @@ def main_menu():
     return input("Select option: ")
 
 if __name__ == "__main__":
-    # Create required directories
     os.makedirs("dataset", exist_ok=True)
     os.makedirs("trained_model", exist_ok=True)
     
-    # Initialize attendance file
     if not os.path.exists("attendance.csv"):
         with open("attendance.csv", "w", newline='') as f:
             writer = csv.writer(f)
