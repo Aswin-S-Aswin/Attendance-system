@@ -6,7 +6,6 @@ import csv
 from datetime import datetime
 
 def mark_attendance():
-    # Load trained model
     with open("trained_model/model.pkl", "rb") as f:
         data = pickle.load(f)
     
@@ -24,7 +23,6 @@ def mark_attendance():
         if not ret:
             continue
             
-        # Process every other frame to improve performance
         if process_this_frame:
             small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
             rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
@@ -52,9 +50,7 @@ def mark_attendance():
         
         process_this_frame = not process_this_frame
         
-        # Display results
         for (top, right, bottom, left) in face_locations:
-            # Scale back up face locations
             top *= 4
             right *= 4
             bottom *= 4
